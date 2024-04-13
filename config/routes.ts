@@ -24,11 +24,9 @@ export default [
   },
   {
     path: '/home',
-    layout: false,
     routes: [
       {
         path: '/home/index',
-        // layout: false,
         name: 'index',
         component: './Home/index',
       },

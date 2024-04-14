@@ -39,3 +39,5 @@ screenshot
 .eslintcache
 
 build
+/.vs/image_manager/FileContentIndex
+/.vs

@@ -161,12 +161,17 @@ const imgStyle1: React.CSSProperties = {
 
 const props: UploadProps = {
     name: 'file',
-    multiple: true,
-    action: 'https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload',
+    multiple: false,
+    action: 'http://localhost:5000/api/upload',
+    showUploadList:false,
+    accept:".jpg,.png,.gif,.png,.jpng,",
     headers: {
         authorization: 'authorization-text',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
     },
     onChange(info) {
+        debugger
         if (info.file.status !== 'uploading') {
             console.log(info.file, info.fileList);
         }
@@ -177,6 +182,7 @@ const props: UploadProps = {
         }
     },
     onDrop(e) {
+        debugger
         console.log('Dropped files', e.dataTransfer.files);
     },
 };

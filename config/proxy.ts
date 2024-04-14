@@ -36,9 +36,13 @@ export default {
   },
   pre: {
     '/api/': {
-      target: 'your pre url',
+      target: 'http://localhost:5000',
       changeOrigin: true,
       pathRewrite: { '^': '' },
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
     },
   },
 };

@@ -26,7 +26,7 @@ export default [
     path: '/home',
     routes: [
       {
-        path: '/home/index',
+        path: '/home',
         name: 'index',
         component: './Home/index',
       },

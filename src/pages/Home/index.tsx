@@ -5,6 +5,7 @@ import type { UploadProps } from 'antd';
 import { Button, message, Upload, Flex, Image, Typography, Card, List } from 'antd';
 import { createStyles } from 'antd-style';
 import { InboxOutlined } from '@ant-design/icons';
+import {init} from '../../services/image_manager/api'
 
 const { Dragger } = Upload;
 
@@ -159,30 +160,35 @@ const imgStyle1: React.CSSProperties = {
     width: 150,
 };
 
+
+
 const props: UploadProps = {
     name: 'file',
     multiple: false,
-    action: 'http://localhost:5000/api/upload',
-    showUploadList:false,
-    accept:".jpg,.png,.gif,.png,.jpng,",
+    action:  'http://localhost:5000/image/api/upload',
+    showUploadList: false,
+    accept: ".jpg,.png,.gif,.png,.jpng,",
     headers: {
         authorization: 'authorization-text',
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type',
     },
     onChange(info) {
-        debugger
-        if (info.file.status !== 'uploading') {
+        
+        const { status } = info.file;
+        if (status !== 'uploading') {
             console.log(info.file, info.fileList);
         }
-        if (info.file.status === 'done') {
-            message.success(`${info.file.name} file uploaded successfully`);
-        } else if (info.file.status === 'error') {
-            message.error(`${info.file.name} file upload failed.`);
+        if (status === 'done') {
+            message.success(`${info.file.name} 上传成功`);
+            debugger
+            init({data:'\\2024-04-16\\9c9bafe7396705f20060cefd5b13593.jpg'})
+        } else if (status === 'error') {
+            message.error(`${info.file.name} 上传失败.`);
         }
     },
     onDrop(e) {
-        debugger
+        
         console.log('Dropped files', e.dataTransfer.files);
     },
 };

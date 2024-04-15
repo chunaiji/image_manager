@@ -3,11 +3,13 @@
 import { request } from '@umijs/max';
 
 /** 获取当前的用户 GET /api/currentUser */
-export async function upload(options?: { [key: string]: any }) {
+export async function init(options?: { [data: string]: any }) {
+  debugger
   return request<{
     data: '';
-  }>('/api/upload', {
+  }>('/image/api/init', {
     method: 'POST',
     ...(options || {}),
   });
+
 }

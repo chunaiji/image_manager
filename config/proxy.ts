@@ -28,14 +28,25 @@ export default {
    */
   test: {
     // localhost:8000/api/** -> https://preview.pro.ant.design/api/**
-    '/api/': {
+    '/image/api/': {
       target: 'https://proapi.azurewebsites.net',
       changeOrigin: true,
       pathRewrite: { '^': '' },
     },
   },
   pre: {
-    '/api/': {
+    '/image/api/': {
+      target: 'http://localhost:5000',
+      changeOrigin: true,
+      pathRewrite: { '^': '' },
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
+    },
+  },
+  dev: {
+    '/image/api/**': {
       target: 'http://localhost:5000',
       changeOrigin: true,
       pathRewrite: { '^': '' },
